@@ -2,7 +2,7 @@
 @extends('layout.main')
 
 @section('container')
-    @foreach ($blogs as $blog)
+    @foreach ($posts as $blog)
     <article class="mb-3">
         <h2>
             <a href="/posts/{{ $blog['slug'] }}">{{ $blog['title'] }}</a>
