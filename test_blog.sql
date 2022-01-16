@@ -16,6 +16,33 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `categories`
+--
+
+DROP TABLE IF EXISTS `categories`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `categories` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `categories`
+--
+
+LOCK TABLES `categories` WRITE;
+/*!40000 ALTER TABLE `categories` DISABLE KEYS */;
+INSERT INTO `categories` VALUES (1,'Olahraga','olahraga','2022-01-03 05:24:57','2022-01-03 05:24:57'),(2,'Kuliner','kuliner','2022-01-03 05:25:34','2022-01-03 05:25:34');
+/*!40000 ALTER TABLE `categories` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `failed_jobs`
 --
 
@@ -56,7 +83,7 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -65,7 +92,7 @@ CREATE TABLE `migrations` (
 
 LOCK TABLES `migrations` WRITE;
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
-INSERT INTO `migrations` VALUES (1,'2014_10_12_000000_create_users_table',1),(2,'2014_10_12_100000_create_password_resets_table',1),(3,'2019_08_19_000000_create_failed_jobs_table',1),(4,'2019_12_14_000001_create_personal_access_tokens_table',1),(5,'2022_01_03_045042_create_posts_table',1);
+INSERT INTO `migrations` VALUES (1,'2014_10_12_000000_create_users_table',1),(2,'2014_10_12_100000_create_password_resets_table',1),(3,'2019_08_19_000000_create_failed_jobs_table',1),(4,'2019_12_14_000001_create_personal_access_tokens_table',1),(5,'2022_01_03_045042_create_posts_table',1),(6,'2022_01_03_122131_create_categories_table',1);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -134,6 +161,7 @@ DROP TABLE IF EXISTS `posts`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `posts` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `category_id` bigint unsigned NOT NULL,
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `excerpt` text COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -143,7 +171,7 @@ CREATE TABLE `posts` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `posts_slug_unique` (`slug`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -152,7 +180,7 @@ CREATE TABLE `posts` (
 
 LOCK TABLES `posts` WRITE;
 /*!40000 ALTER TABLE `posts` DISABLE KEYS */;
-INSERT INTO `posts` VALUES (1,'Post kelima','post-kelima','Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque molestias impedit libero alias consectetur quasi kelima','<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque molestias impedit libero alias consectetur quasi harum necessitatibus! Vel repellendus incidunt dolorum, praesentium facilis architecto sed voluptate porro beatae accusamus deserunt.</p><p>Voluptates voluptatem impedit, tempora vel repellat nesciunt! Suscipit autem veniam dolores, laboriosam aperiam id libero assumenda dolor eveniet neque optio officia deleniti natus quo illo velit adipisci! Expedita dolores culpa dolorem provident nam possimus eveniet commodi. In, voluptate, nemo soluta excepturi itaque ab aliquid aut voluptatem optio magnam eos ea modi culpa adipisci tempora obcaecati libero est? Impedit veniam ut aspernatur illum accusantium, modi eos temporibus et doloremque quae ratione. kelima</p>',NULL,'2022-01-02 22:47:36','2022-01-02 22:47:36'),(2,'Post Keempat','post-keempat','Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque molestias impedit libero alias consectetur quasi keempat','<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque molestias impedit libero alias consectetur quasi harum necessitatibus! Vel repellendus incidunt dolorum, praesentium facilis architecto sed voluptate porro beatae accusamus deserunt.</p><p>Voluptates voluptatem impedit, tempora vel repellat nesciunt! Suscipit autem veniam dolores, laboriosam aperiam id libero assumenda dolor eveniet neque optio officia deleniti natus quo illo velit adipisci! Expedita dolores culpa dolorem provident nam possimus eveniet commodi. In, voluptate, nemo soluta excepturi itaque ab aliquid aut voluptatem optio magnam eos ea modi culpa adipisci tempora obcaecati libero est? Impedit veniam ut aspernatur illum accusantium, modi eos temporibus et doloremque quae ratione. keempat</p>',NULL,'2022-01-02 22:48:08','2022-01-02 22:48:08'),(3,'Post Ketiga','post-ketiga','Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque molestias impedit libero alias consectetur quasi ketiga','<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque molestias impedit libero alias consectetur quasi harum necessitatibus! Vel repellendus incidunt dolorum, praesentium facilis architecto sed voluptate porro beatae accusamus deserunt.</p><p>Voluptates voluptatem impedit, tempora vel repellat nesciunt! Suscipit autem veniam dolores, laboriosam aperiam id libero assumenda dolor eveniet neque optio officia deleniti natus quo illo velit adipisci! Expedita dolores culpa dolorem provident nam possimus eveniet commodi. In, voluptate, nemo soluta excepturi itaque ab aliquid aut voluptatem optio magnam eos ea modi culpa adipisci tempora obcaecati libero est? Impedit veniam ut aspernatur illum accusantium, modi eos temporibus et doloremque quae ratione. ketiga</p>',NULL,'2022-01-02 22:48:24','2022-01-02 22:48:24');
+INSERT INTO `posts` VALUES (1,2,'Post Pertama','post-pertama','Kuliner ipsum dolor sit amet consectetur adipisicing elit. Cumque molestias impedit libero alias consectetur quasi kelima','<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque molestias impedit libero alias consectetur quasi harum necessitatibus! Vel repellendus incidunt dolorum, praesentium facilis architecto sed voluptate porro beatae accusamus deserunt.</p> <p>Voluptates voluptatem impedit, tempora vel repellat nesciunt! Suscipit autem veniam dolores, laboriosam aperiam id libero assumenda dolor eveniet neque optio officia deleniti natus quo illo velit adipisci! Expedita dolores culpa dolorem provident nam possimus eveniet commodi. In, voluptate, nemo soluta excepturi itaque ab aliquid aut voluptatem optio magnam eos ea modi culpa adipisci tempora obcaecati libero est? Impedit veniam ut aspernatur illum accusantium, modi eos temporibus et doloremque quae ratione. kuliner</p>',NULL,'2022-01-03 05:29:59','2022-01-03 05:29:59'),(2,2,'Post Kedua','post-kedua','Olahraga ipsum dolor sit amet consectetur adipisicing elit. Cumque molestias impedit libero alias consectetur quasi kelima','<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque molestias impedit libero alias consectetur quasi harum necessitatibus! Vel repellendus incidunt dolorum, praesentium facilis architecto sed voluptate porro beatae accusamus deserunt.</p> <p>Voluptates voluptatem impedit, tempora vel repellat nesciunt! Suscipit autem veniam dolores, laboriosam aperiam id libero assumenda dolor eveniet neque optio officia deleniti natus quo illo velit adipisci! Expedita dolores culpa dolorem provident nam possimus eveniet commodi. In, voluptate, nemo soluta excepturi itaque ab aliquid aut voluptatem optio magnam eos ea modi culpa adipisci tempora obcaecati libero est? Impedit veniam ut aspernatur illum accusantium, modi eos temporibus et doloremque quae ratione. Olahraga</p>',NULL,'2022-01-03 05:31:34','2022-01-03 05:31:34'),(3,2,'Post Ketiga','post-ketiga','Olahraga ipsum dolor sit amet consectetur adipisicing elit. Cumque molestias impedit libero alias consectetur quasi kelima','<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque molestias impedit libero alias consectetur quasi harum necessitatibus! Vel repellendus incidunt dolorum, praesentium facilis architecto sed voluptate porro beatae accusamus deserunt.</p> <p>Voluptates voluptatem impedit, tempora vel repellat nesciunt! Suscipit autem veniam dolores, laboriosam aperiam id libero assumenda dolor eveniet neque optio officia deleniti natus quo illo velit adipisci! Expedita dolores culpa dolorem provident nam possimus eveniet commodi. In, voluptate, nemo soluta excepturi itaque ab aliquid aut voluptatem optio magnam eos ea modi culpa adipisci tempora obcaecati libero est? Impedit veniam ut aspernatur illum accusantium, modi eos temporibus et doloremque quae ratione. Olahraga</p>',NULL,'2022-01-03 05:31:53','2022-01-03 05:31:53'),(4,1,'Post Keempat','post-keempat','Olahraga ipsum dolor sit amet consectetur adipisicing elit. Cumque molestias impedit libero alias consectetur quasi kelima','<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque molestias impedit libero alias consectetur quasi harum necessitatibus! Vel repellendus incidunt dolorum, praesentium facilis architecto sed voluptate porro beatae accusamus deserunt.</p> <p>Voluptates voluptatem impedit, tempora vel repellat nesciunt! Suscipit autem veniam dolores, laboriosam aperiam id libero assumenda dolor eveniet neque optio officia deleniti natus quo illo velit adipisci! Expedita dolores culpa dolorem provident nam possimus eveniet commodi. In, voluptate, nemo soluta excepturi itaque ab aliquid aut voluptatem optio magnam eos ea modi culpa adipisci tempora obcaecati libero est? Impedit veniam ut aspernatur illum accusantium, modi eos temporibus et doloremque quae ratione. Olahraga</p>',NULL,'2022-01-03 06:12:31','2022-01-03 06:12:31');
 /*!40000 ALTER TABLE `posts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -196,4 +224,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-01-03 12:59:38
+-- Dump completed on 2022-01-03 23:34:10
