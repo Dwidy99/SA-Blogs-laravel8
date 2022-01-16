@@ -29,7 +29,7 @@ CREATE TABLE `categories` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +38,7 @@ CREATE TABLE `categories` (
 
 LOCK TABLES `categories` WRITE;
 /*!40000 ALTER TABLE `categories` DISABLE KEYS */;
-INSERT INTO `categories` VALUES (1,'Olahraga','olahraga','2022-01-03 05:24:57','2022-01-03 05:24:57'),(2,'Kuliner','kuliner','2022-01-03 05:25:34','2022-01-03 05:25:34');
+INSERT INTO `categories` VALUES (1,'Laravel','laravel','2022-01-03 10:23:45','2022-01-03 10:23:45'),(2,'Codeigniter','codeigniter','2022-01-03 10:23:45','2022-01-03 10:23:45'),(3,'Belajar Coding','belajar-coding','2022-01-03 10:23:45','2022-01-03 10:23:45');
 /*!40000 ALTER TABLE `categories` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -162,6 +162,7 @@ DROP TABLE IF EXISTS `posts`;
 CREATE TABLE `posts` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `category_id` bigint unsigned NOT NULL,
+  `user_id` bigint unsigned NOT NULL,
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `excerpt` text COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -180,7 +181,7 @@ CREATE TABLE `posts` (
 
 LOCK TABLES `posts` WRITE;
 /*!40000 ALTER TABLE `posts` DISABLE KEYS */;
-INSERT INTO `posts` VALUES (1,2,'Post Pertama','post-pertama','Kuliner ipsum dolor sit amet consectetur adipisicing elit. Cumque molestias impedit libero alias consectetur quasi kelima','<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque molestias impedit libero alias consectetur quasi harum necessitatibus! Vel repellendus incidunt dolorum, praesentium facilis architecto sed voluptate porro beatae accusamus deserunt.</p> <p>Voluptates voluptatem impedit, tempora vel repellat nesciunt! Suscipit autem veniam dolores, laboriosam aperiam id libero assumenda dolor eveniet neque optio officia deleniti natus quo illo velit adipisci! Expedita dolores culpa dolorem provident nam possimus eveniet commodi. In, voluptate, nemo soluta excepturi itaque ab aliquid aut voluptatem optio magnam eos ea modi culpa adipisci tempora obcaecati libero est? Impedit veniam ut aspernatur illum accusantium, modi eos temporibus et doloremque quae ratione. kuliner</p>',NULL,'2022-01-03 05:29:59','2022-01-03 05:29:59'),(2,2,'Post Kedua','post-kedua','Olahraga ipsum dolor sit amet consectetur adipisicing elit. Cumque molestias impedit libero alias consectetur quasi kelima','<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque molestias impedit libero alias consectetur quasi harum necessitatibus! Vel repellendus incidunt dolorum, praesentium facilis architecto sed voluptate porro beatae accusamus deserunt.</p> <p>Voluptates voluptatem impedit, tempora vel repellat nesciunt! Suscipit autem veniam dolores, laboriosam aperiam id libero assumenda dolor eveniet neque optio officia deleniti natus quo illo velit adipisci! Expedita dolores culpa dolorem provident nam possimus eveniet commodi. In, voluptate, nemo soluta excepturi itaque ab aliquid aut voluptatem optio magnam eos ea modi culpa adipisci tempora obcaecati libero est? Impedit veniam ut aspernatur illum accusantium, modi eos temporibus et doloremque quae ratione. Olahraga</p>',NULL,'2022-01-03 05:31:34','2022-01-03 05:31:34'),(3,2,'Post Ketiga','post-ketiga','Olahraga ipsum dolor sit amet consectetur adipisicing elit. Cumque molestias impedit libero alias consectetur quasi kelima','<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque molestias impedit libero alias consectetur quasi harum necessitatibus! Vel repellendus incidunt dolorum, praesentium facilis architecto sed voluptate porro beatae accusamus deserunt.</p> <p>Voluptates voluptatem impedit, tempora vel repellat nesciunt! Suscipit autem veniam dolores, laboriosam aperiam id libero assumenda dolor eveniet neque optio officia deleniti natus quo illo velit adipisci! Expedita dolores culpa dolorem provident nam possimus eveniet commodi. In, voluptate, nemo soluta excepturi itaque ab aliquid aut voluptatem optio magnam eos ea modi culpa adipisci tempora obcaecati libero est? Impedit veniam ut aspernatur illum accusantium, modi eos temporibus et doloremque quae ratione. Olahraga</p>',NULL,'2022-01-03 05:31:53','2022-01-03 05:31:53'),(4,1,'Post Keempat','post-keempat','Olahraga ipsum dolor sit amet consectetur adipisicing elit. Cumque molestias impedit libero alias consectetur quasi kelima','<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque molestias impedit libero alias consectetur quasi harum necessitatibus! Vel repellendus incidunt dolorum, praesentium facilis architecto sed voluptate porro beatae accusamus deserunt.</p> <p>Voluptates voluptatem impedit, tempora vel repellat nesciunt! Suscipit autem veniam dolores, laboriosam aperiam id libero assumenda dolor eveniet neque optio officia deleniti natus quo illo velit adipisci! Expedita dolores culpa dolorem provident nam possimus eveniet commodi. In, voluptate, nemo soluta excepturi itaque ab aliquid aut voluptatem optio magnam eos ea modi culpa adipisci tempora obcaecati libero est? Impedit veniam ut aspernatur illum accusantium, modi eos temporibus et doloremque quae ratione. Olahraga</p>',NULL,'2022-01-03 06:12:31','2022-01-03 06:12:31');
+INSERT INTO `posts` VALUES (1,1,1,'Laravel','laravel','Laravel adalah framework PHP untuk membangun aplikasi web','Laravel adalah framework PHP untuk membangun aplikasi web kadang suka ngaco kadang suka nyebelin juga gada akhlak','2022-01-03 10:23:45','2022-01-03 10:23:45','2022-01-03 10:23:45'),(2,2,1,'Codeigniter','codeigniter','Codeigniter adalah framework PHP untuk membangun aplikasi web','Codeigniter adalah framework PHP untuk membangun aplikasi web kadang suka ngaco kadang suka nyebelin juga gada akhlak','2022-01-03 10:23:45','2022-01-03 10:23:45','2022-01-03 10:23:45'),(3,3,1,'Gada Ahklal','gada-ahklal','Layanan gada Akhlak adalah framework PHP untuk membangun aplikasi web','Layanan gada Akhlak adalah framework PHP untuk membangun aplikasi web kadang suka ngaco kadang suka nyebelin juga gada akhlak','2022-01-03 10:23:45','2022-01-03 10:23:45','2022-01-03 10:23:45'),(4,3,1,'Blog Post Keempat','blog-post-keempat','Keempat gada Akhlak adalah framework PHP untuk membangun aplikasi web','Keempat gada Akhlak adalah framework PHP untuk membangun aplikasi web kadang suka ngaco kadang suka nyebelin juga gada akhlak','2022-01-03 10:23:45','2022-01-03 10:23:45','2022-01-03 10:23:45');
 /*!40000 ALTER TABLE `posts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -196,14 +197,13 @@ CREATE TABLE `users` (
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `is_admin` tinyint(1) NOT NULL DEFAULT '0',
-  `email_verified_at` tinyint(1) DEFAULT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -212,6 +212,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,'Dwi Yulianto','dwi@gmail.com','$2y$10$xiiyjrMaTY.1fLpsPxqcZuusIsoV.j/o5kPQ6m.xJLRDsNnVdbS12',NULL,NULL,'2022-01-03 10:23:45','2022-01-03 10:23:45');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -224,4 +225,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-01-03 23:34:10
+-- Dump completed on 2022-01-04  0:32:51
