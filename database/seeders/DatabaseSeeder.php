@@ -26,8 +26,13 @@ class DatabaseSeeder extends Seeder
             User::factory(3)->create();
             
             Category::create([
-                'name' => 'Olahraga',
-                'slug' => 'olahraga',
+                'name' => 'Cryptocurrency',
+                'slug' => 'cryptocurrency',
+            ]);
+            
+            Category::create([
+                'name' => 'Tidur',
+                'slug' => 'tidur',
             ]);
             
             Category::create([
