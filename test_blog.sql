@@ -205,7 +205,7 @@ CREATE TABLE `users` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_username_unique` (`username`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -214,7 +214,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Dalima Cinthia Hariyah','bahuwarna.wasita','anggraini.maimunah@example.net','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi','2022-01-04 04:52:52','RARs3w5Xzo','2022-01-04 04:52:52','2022-01-04 04:52:52'),(2,'Zelda Shania Hasanah','xanana.manullang','elaksita@example.net','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi','2022-01-04 04:52:52','tcaQpYPUiE','2022-01-04 04:52:52','2022-01-04 04:52:52'),(3,'Nyana Sabar Manullang','handayani.ilyas','fprasetya@example.net','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi','2022-01-04 04:52:52','RbV77y6v7i','2022-01-04 04:52:52','2022-01-04 04:52:52');
+INSERT INTO `users` VALUES (1,'Dalima Cinthia Hariyah','bahuwarna.wasita','anggraini.maimunah@example.net','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi','2022-01-04 04:52:52','RARs3w5Xzo','2022-01-04 04:52:52','2022-01-04 04:52:52'),(2,'Zelda Shania Hasanah','xanana.manullang','elaksita@example.net','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi','2022-01-04 04:52:52','tcaQpYPUiE','2022-01-04 04:52:52','2022-01-04 04:52:52'),(3,'Nyana Sabar Manullang','handayani.ilyas','fprasetya@example.net','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi','2022-01-04 04:52:52','RbV77y6v7i','2022-01-04 04:52:52','2022-01-04 04:52:52'),(8,'Dwi','adminA','rchemical7@gmail.com','$2y$10$UcE2TCZWORyVDsY1dOkLA.iQLmkwu//iDi6P6VY6TBwsq/f/qOTbK',NULL,NULL,'2022-01-05 06:05:55','2022-01-05 06:05:55');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -227,4 +227,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-01-05  8:52:04
+-- Dump completed on 2022-01-05 20:08:51
