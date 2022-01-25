@@ -5,28 +5,47 @@
     <h1 class="h2">{{ $title }}</h1>
 </div>
 
-<div class="col-lg-8">
+<div class="mb-5 col-lg-8">
     <form method="post" action="/dashboard/posts">
         @csrf
         <div class="mb-3">
             <label for="title" class="form-label">Title</label>
-            <input type="text" class="form-control" id="title" placeholder="Title..">
+            <input type="text" name="title" class="form-control @error('title') is-invalid @enderror" id="title" value="{{ old('title') }}" autofocus placeholder="Title..">
+            @error('title')
+                <small class="text-danger">{{ $message }}</small>
+            @enderror
         </div>
         <div class="mb-3">
             <label for="slug" class="form-label">Slug</label>
-            <input type="text" class="form-control" id="slug" placeholder="Slug..">
+            <input type="text" name="slug" class="form-control @error('slug') is-invalid @enderror" id="slug" value="{{ old('slug') }}" placeholder="Slug..">
+            @error('slug')
+                <small class="text-danger">{{ $message }}</small>
+            @enderror
         </div>
         <div class="mb-3">
             <label for="category_id" class="form-label">Category</label>
-            <select class="form-select" name="category_id">
+            <select name="category_id" class="form-select @error('category_id') is-invalid @enderror">
+                <option value="">-- Choose Category --</option>
                 @foreach ($categories as $category)
-                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                @if (old('category_id') == $category->id)
+                    <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
+                    @else
+                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                @endif
                 @endforeach
             </select>
+            @error('category_id')
+                <small class="text-danger">{{ $message }}</small>
+            @enderror
         </div>
         <div class="mb-3">
-            <label for="body" class="form-label">Category</label>
-            <input id="body" type="hidden" name="body">
+            <label for="body" class="form-label">Body</label>
+            <p>
+            @error('body')
+                <small class="text-danger">{{ $message }}</small>
+            @enderror
+            </p>
+            <input id="body" type="hidden" name="body" class="@error('body') is-invalid @enderror"  value="{{ old('body') }}">
             <trix-editor input="body"></trix-editor>
         </div>
         <div class="mb-3">
