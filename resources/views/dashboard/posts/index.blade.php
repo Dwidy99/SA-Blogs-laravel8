@@ -8,7 +8,7 @@
 <div class="table-responsive col-lg-8">
     @if (session()->has('success'))
     <div class="alert alert-success" role="alert">
-        {{ session('success') }}
+        <b>{{ session('success') }}</b>
       </div>
     @endif
     <a href="/dashboard/posts/create" class="btn btn-primary">Create New Post</a>
@@ -29,8 +29,12 @@
                 <td>{{ $post->category->name }}</td>
                 <td>
                     <a href="/dashboard/posts/{{ $post->slug }}" class="badge bg-secondary"><span data-feather="eye"></span></a>
-                    <a href="/dashboard/posts/{{ $post->id }}" class="badge bg-warning"><span data-feather="edit"></span></a>
-                    <a href="/dashboard/posts/{{ $post->id }}" class="badge bg-danger"><span data-feather="x"></span></a>
+                    <a href="/dashboard/posts/{{ $post->slug }}/edit" class="badge bg-warning"><span data-feather="edit"></span></a>
+                    <form action="/dashboard/posts/{{ $post->slug }}" method="post" class="d-inline">
+                        @method('delete')
+                        @csrf
+                        <button class="badge bg-danger border-0" onclick="return confirm('Are You sure ?');"><span data-feather="x"></span></button>
+                    </form>
                 </td>
             </tr>  
             @endforeach

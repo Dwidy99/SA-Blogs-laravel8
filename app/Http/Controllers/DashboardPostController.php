@@ -80,7 +80,11 @@ class DashboardPostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view('dashboard.posts.edit', [
+            "title" => "Edit New Post",
+            'categories' => Category::all(),
+            'post' => $post
+        ]);
     }
 
     /**
@@ -92,7 +96,46 @@ class DashboardPostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        // CARA 1.
+        // $rules = [
+        //     'title' => 'required',
+        //     'slug' => 'required',
+        //     'category_id' => 'required',
+        //     'body' => 'required',
+        // ];
+
+        // if (!$request->has('title')) {
+        //     $validatedData['title'] = 'required|unique:posts|max:255';
+        // }
+        // if (!$request->has('slug')) {
+        //     $validatedData['slug'] = 'required|unique:posts|max:255';
+        // }
+
+        // Cara 2.
+        if ($request->title == $post->title) {
+            $is_title = '';
+        } else {
+            $is_title = 'unique:posts,title';
+        }
+        
+        if ($request->slug == $post->slug) {
+            $is_slug = '';
+        } else {
+            $is_slug = 'unique:posts,slug';
+        }
+
+        $validatedData = $request->validate([
+            'title' => 'required|' . $is_title,
+            'slug' => 'required|' . $is_slug,
+            'category_id' => 'required',
+            'body' => 'required',
+        ]);
+
+        $validatedData['excerpt'] = Str::limit($request->body, 200);
+        // $validatedData = $request->validate($rules);
+        Post::where('id', $post->id)
+                ->update($validatedData);
+        return redirect('/dashboard/posts')->with('success', 'Post has been updated!');
     }
 
     /**
@@ -103,7 +146,8 @@ class DashboardPostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        Post::destroy($post->id);
+        return redirect('/dashboard/posts')->with('success', 'Post has been deleted!');
     }
 
     public function checkSlug(Request $request)
