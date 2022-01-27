@@ -48,8 +48,13 @@ class DashboardPostController extends Controller
             'title' => 'required|unique:posts|max:255',
             'slug' => 'required|unique:posts|max:255',
             'category_id' => 'required',
+            'image' => 'image|file|mimes:png,jpg,gif|max:1048',
             'body' => 'required',
         ]);
+
+        if ($request->file('image')) {
+            $validatedData['image'] = $request->file('image')->store('posts-image');
+        }
 
         $validatedData['user_id'] = auth()->user()->id;
         $validatedData['excerpt'] = Str::limit($request->body, 200);

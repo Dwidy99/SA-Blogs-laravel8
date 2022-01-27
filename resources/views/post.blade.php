@@ -14,7 +14,12 @@
                     </a>.
                 </p>
 
-                <img src="https://source.unsplash.com/1200x400?{{ $post->category->name }}" class="card-img-top img-fluid mb-5" alt="{{ $post->category->name }}">
+                @if ($post->image)
+                    <img src="{{ asset('storage/' . $post->image) }}" class="card-img-top img-fluid mb-5" alt="{{ $post->category->name }}">
+                @else
+                    <img src="https://source.unsplash.com/1200x400?{{ $post->category->name }}" class="card-img-top img-fluid mb-5" alt="{{ $post->category->name }}">
+                @endif
+
                 
                 {!! $post->body !!}
             </article>

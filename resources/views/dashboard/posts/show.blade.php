@@ -15,6 +15,14 @@
                     @csrf
                     <button class="btn btn-danger" onclick="return confirm('Are You sure ?');"><span data-feather="x"></span> Delete</button>
                 </form>
+
+                @if ($post->image)
+                    <div style="max-height: 450px; overflow: hidden;">
+                        <img src="{{ asset('storage/' . $post->image) }}" class="card-img-top img-fluid mb-3" alt="{{ $post->category->name }}">                
+                    </div>
+                @else
+                    <img src="https://source.unsplash.com/1200x400?{{ $post->category->name }}" class="card-img-top img-fluid mb-3" alt="{{ $post->category->name }}">
+                @endif
                 
                 <p class="mt-3">
                     By. <a href="/posts?author={{ $post->author->username }}" class="text-decoration-none">{{ $post->author->name }}</a> in <a href="/posts?category={{ $post->category->slug }}" class="text-decoration-none mb-3">
@@ -22,7 +30,6 @@
                     </a>.
                 </p>
 
-                <img src="https://source.unsplash.com/1200x400?{{ $post->category->name }}" class="card-img-top img-fluid mb-3" alt="{{ $post->category->name }}">
                 
                 {!! $post->body !!}
             </article>

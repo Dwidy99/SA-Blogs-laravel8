@@ -21,7 +21,11 @@
 
     @if ($posts->count())
     <div class="card mb-3">
-        <img src="https://source.unsplash.com/1200x400?{{ $posts[0]->category->name }}" class="card-img-top" alt="{{ $posts[0]->category->name }}" class="img-fluid">
+        @if ($posts[0]->image)
+            <img src="{{ asset('storage/'.$posts[0]->image) }}" class="card-img-top" alt="{{ $posts[0]->category->name }}" class="img-fluid">
+        @else
+            <img src="https://source.unsplash.com/1200x400?{{ $posts[0]->category->name }}" class="card-img-top" alt="{{ $posts[0]->category->name }}" class="img-fluid">
+        @endif
 
         <div class="card-body text-center">
             <h3 class="card-title">
@@ -41,11 +45,11 @@
                     {{ $posts[0]->created_at->diffForHumans() }}
                 </small>
             </p>
-            <p class="card-text">{{ $posts[0]->excerpt }}</p>
+            <p class="card-text">{!! strip_tags($posts[0]->excerpt) !!}</p>
             <a href="/post/{{ $posts[0]->slug }}" class="text-decoration-none btn btn-primary">Read more..</a>
         </div>
 
-      </div>
+    </div>
 
     <div class="container">
         <div class="row">
@@ -57,7 +61,12 @@
                             {{ $post->category->name }}
                         </a>
                     </div>
-                    <img src="https://source.unsplash.com/500x401?{{ $post->category->name }}" class="card-img-top" alt="">
+
+                    @if ($post->image)
+                        <img src="{{ asset('storage/' . $post->image) }}" class="card-img-top" alt="{{ $post->category->name }}">
+                    @else
+                        <img src="https://source.unsplash.com/500x401?{{ $post->category->name }}" class="card-img-top" alt="{{ $post->category->name }}">
+                    @endif
                     <div class="card-body">
                         <h2>
                             <a href="/post/{{ $post->slug }}" class="text-decoration-none">{{ $post->title }}</a>
@@ -73,7 +82,7 @@
                             </small>
                         </p>
 
-                        <p>{{ $post->excerpt }}</p>
+                        <div>{!!  strip_tags($post->excerpt) !!}</div>
                       
                         <a href="/post/{{ $post->slug }}" class="text-decoration-none btn btn-primary">
                             Read more..
