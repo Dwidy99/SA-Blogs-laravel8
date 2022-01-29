@@ -17,7 +17,7 @@
         </div>
         <div class="mb-3">
             <label for="slug" class="form-label">Slug</label>
-            <input type="text" name="slug" class="form-control @error('slug') is-invalid @enderror" id="slug" value="{{ old('slug') }}" placeholder="Slug..">
+            <input type="text" name="slug" class="form-control @error('slug') is-invalid @enderror" id="slugPost" value="{{ old('slug') }}" placeholder="Slug..">
             @error('slug')
                 <small class="text-danger">{{ $message }}</small>
             @enderror
@@ -62,38 +62,4 @@
 
     </form>
 </div>
-
-<script>
-    const title = document.getElementById('title');
-    const slug = document.getElementById('slug');
-
-    title.addEventListener('change', function() {
-        fetch(`/dashboard/posts/checkSlug?title=${title.value}`)
-            .then(response => response.json()) // Transform the data into json
-            .then(data => slug.value = data.slug)  
-    });
-
-    document.addEventListener('trix-file-accept', function(e) {
-        e.preventDefault();
-    });
-
-    // Preview image
-    function previewImage() {
-        const image = document.querySelector('#image');
-        const imgPreview = document.querySelector('.img-preview');
-        console.log(image.files);
-        
-        imgPreview.style.display = 'block';
-
-        const oFReader = new FileReader();
-        oFReader.readAsDataURL(image.files[0]);
-
-        oFReader.onload = function(oFREvent) {
-            console.log(oFREvent);
-            imgPreview.src = oFREvent.target.result;
-        }
-    }
-
-
-</script>
 @endsection
